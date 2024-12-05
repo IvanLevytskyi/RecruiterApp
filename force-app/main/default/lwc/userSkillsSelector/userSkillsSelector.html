@@ -1,0 +1,33 @@
+<template>
+    <div class="slds-p-around_medium">
+        <p class="slds-text-title_caps slds-m-bottom_xx-small">Your skills</p>
+        <template for:each={candidateSkills} for:item="skill">
+            <c-custom-pill 
+                key={skill.value} 
+                label={skill.label} 
+                value={skill.value} 
+                show-remove-button
+                class="slds-m-right_xx-small"
+                onremove={handleRemoveCandidateSkill}></c-custom-pill>
+        </template>
+
+        <p class="slds-text-title_caps slds-m-top_xx-small">Choose skills among the list</p>
+
+        <lightning-input 
+            type="text" 
+            label="Search for skills" 
+            placeholder="type here..."
+            onchange={searchChangeHandler}
+            class="slds-m-bottom_xx-small"></lightning-input>
+
+        <template for:each={skillsToDisplay} for:item="skill">
+            <c-custom-pill 
+                key={skill.value} 
+                icon-name="utility:add" 
+                label={skill.label} 
+                value={skill.value}
+                class="slds-m-right_xx-small"
+                onclicked={handleClickedSkill}></c-custom-pill>
+        </template>
+    </div>
+</template>

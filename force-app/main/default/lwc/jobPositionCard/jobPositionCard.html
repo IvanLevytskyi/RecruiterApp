@@ -1,0 +1,21 @@
+<template>
+    <div class="slds-grid slds-wrap">
+        <div class="slds-col slds-size_10-of-12">
+            <span class="slds-truncate" title={jobPosition.title}>
+                <a class="slds-text-heading_small" data-id={jobPosition.id} onclick={openJobPosition}>{jobPosition.title}</a>&nbsp;
+                <c-display-salary salary-from={jobPosition.salaryFrom} salary-to={jobPosition.salaryTo}></c-display-salary>&nbsp;
+                <lightning-badge lwc:if={jobPosition.isRemote} label="Remote" icon-name="utility:world"></lightning-badge>
+            </span>
+        </div>
+        <div class="slds-col slds-size_1-of-12">
+            <lightning-icon icon-name="utility:people" alternative-text="Number of applicants" size="xx-small"></lightning-icon>{jobPosition.numberOfApplications}
+        </div>
+        <div class="slds-col slds-size_1-of-12">
+            <lightning-icon icon-name="utility:date_input" alternative-text="Number of days since opened" size="xx-small"></lightning-icon>{jobPosition.daysOpen} d
+        </div>
+        <div class="slds-col slds-size_1-of-1 slds-border_bottom">
+            {jobPosition.shortDescription}
+        </div>
+    </div>
+    
+</template>

@@ -1,0 +1,63 @@
+<template>
+    <div class="slds-theme_default slds-p-around_medium">
+        <p class="slds-text-heading_large">List of Job Positions</p>
+
+        <div class="slds-grid slds-m-vertical_small">
+            <div class="slds-col">
+                <span class="slds-text-heading_medium">{numberOfJobPositions} open job positions</span>
+            </div>
+            <div class="slds-col">
+                <lightning-input type="text" label="Search" placeholder="Search this list..."
+                    variant="label-hidden" onchange={searchChangeHandler}></lightning-input>
+            </div>
+            <div class="slds-col">
+                <lightning-button-icon-stateful icon-name="utility:filterList" selected={showFilterPanel}
+                    onclick={handleFilterButtonClick} alternative-text="Filters"></lightning-button-icon-stateful>
+            </div>
+        </div>
+
+        <div class="container">
+            <!-- List of job options  -->
+            <div class="slds-col">
+                <template for:each={jobPositionsOnPage} for:item="jobPosition">
+                    <c-job-position-card key={jobPosition.id} job-position={jobPosition}></c-job-position-card>
+                </template>
+
+                <div class="emptyContent slds-is-absolute">
+                    <div class="slds-text-align_center" lwc:if={noRecordsMatchCriteria}>
+                        There are no records that match your criteria
+                    </div>
+                </div>
+
+                <div class="slds-m-vertical_small">
+                    <c-paginator 
+                        lwc:if={numberOfPages} 
+                        max-page-number={numberOfPages} 
+                        onchange={handlePageChanges}
+                        class="slds-m-vertical_small"></c-paginator>
+                </div>
+            </div>
+            <!-- Filter panel  -->
+            <div class={panelClass}>
+                <div class="slds-panel__header">
+                    <h2 class="slds-panel__header-title slds-text-heading_small slds-truncate" title="Filters">Filters</h2>
+                    <div class="slds-panel__header-actions">
+                        <lightning-button-icon icon-name="utility:close"  variant="container" alternative-text="Hide panel" title="Hide panel" onclick={handleFilterButtonClick}></lightning-button-icon>
+                    </div>
+                </div>
+
+                <div class="slds-panel__body">
+                    <lightning-radio-group data-name="isRemoteRadio" onchange={handleIsRemoteChange} label="Is remote?"
+                        options={isRemoteOptions} value={isRemoteValue} type="button" class="slds-m-vertical_x-small"></lightning-radio-group>
+                    <lightning-slider label="Salary starting from ($)" data-name="salaryFromSlider" onchange={handleSalaryFromChange}
+                        min="0" max="10000" step="500" value={salaryFromValue} class="slds-m-vertical_x-small"></lightning-slider>
+                    
+                    <lightning-button-group class="slds-m-vertical_x-small">
+                        <lightning-button label="Reset" onclick={resetFilters}></lightning-button>
+                        <lightning-button label="Apply" variant="brand" onclick={applyFilters}></lightning-button>
+                    </lightning-button-group>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

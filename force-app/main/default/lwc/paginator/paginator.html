@@ -1,0 +1,11 @@
+<template>
+    <div class="slds-align_absolute-center">
+        <lightning-button label="<" onclick={handlePrevious} class="slds-m-right_x-small"
+            disabled={isPreviousDisabled}></lightning-button>
+        <template for:each={pagesInfo} for:item="page">
+            <lightning-button key={page.number} name={page.number} label={page.number} onclick={handleClick}
+                variant={page.variant} class="slds-m-right_x-small"></lightning-button>
+        </template>
+        <lightning-button label=">" onclick={handleNext} disabled={isNextDisabled}></lightning-button>
+    </div>
+</template>

@@ -1,0 +1,16 @@
+.container-offset {
+    margin: 0 80px;
+    display: flex;
+}
+
+.left-side {
+    width: var(--lwc-sizeXSmall, 12rem);
+    min-width: var(--lwc-sizeXSmall, 12rem);
+    background-color: rgb(243, 243, 243);
+}
+
+.right-side {
+    border-left: var(--lwc-borderWidthThin, 1px) solid var(--lwc-colorBorderSeparatorAlt, #939393);
+    flex: 1;
+    position: relative;
+}

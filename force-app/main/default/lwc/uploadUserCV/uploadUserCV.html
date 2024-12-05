@@ -1,0 +1,19 @@
+<template>
+    <div class="slds-p-around_medium slds-border_top slds-border_bottom">
+        <p class="slds-text-title_caps">Upload your CV</p>
+        <p>Supported file formats: *.pdf, *.docx</p>
+
+        <template lwc:if={cvDocumentId}>
+            <p>You've already uploaded your CV <i>{documentName}</i> on <lightning-formatted-date-time
+                    value={documentCreatedDate} year="numeric" month="numeric" day="numeric" hour="2-digit"
+                    minute="2-digit" hour12={ampm}></lightning-formatted-date-time> </p>
+            <p>To update your resume, simply upload it. The old one will be automatically deleted.</p>
+        </template>
+        <template lwc:else>
+            <p>Upload your resume and it will be available to recruiters.</p>
+        </template>
+
+        <lightning-file-upload label="Upload your CV" accept={acceptedFormats} name="fileUploader" record-id={contactId}
+            onuploadfinished={handleUploadFinished}></lightning-file-upload>
+    </div>
+</template>

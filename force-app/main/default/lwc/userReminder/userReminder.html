@@ -1,0 +1,17 @@
+<template>
+    <div lwc:if={showMessage}
+        class="slds-theme_warning slds-theme_alert-texture slds-text-align_center slds-p-around_medium">
+        <div class="slds-grid slds-grid_align-center">
+            <div class="slds-col">
+                <lightning-icon icon-name="utility:warning" size="xx-small"></lightning-icon>
+                <span class="slds-text-title_caps slds-m-left_xx-small">Fill out your profile to be able to apply for jobs</span>
+                <ul class="slds-list_dotted">
+                    <li lwc:if={areMissingFields}>{missingFieldsMessage}</li>
+                    <li lwc:if={areMissingSkills}>Choose your skills from the list of proposed ones</li>
+                    <li lwc:if={isMissingCV}>Upload your most recent CV</li>
+                </ul>
+                <a href={profileLink}>Click here to fill in the missing information</a>
+            </div>
+        </div>
+    </div>
+</template>

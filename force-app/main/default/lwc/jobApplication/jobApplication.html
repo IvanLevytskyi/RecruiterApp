@@ -1,0 +1,32 @@
+<template>
+    <lightning-quick-action-panel header="Apply for a job">
+        <lightning-spinner alternative-text="Processing" lwc:if={showSpinner}></lightning-spinner>
+        <div lwc:if={isValid}>
+            <lightning-icon icon-name="action:approval" size="xx-small" class="slds-m-right_xx-small"></lightning-icon>
+            <b>You meet all the requirements and can apply for this job.</b>
+        </div>
+        <div lwc:else>
+            <lightning-icon icon-name="action:close" size="xx-small" class="slds-m-right_xx-small"></lightning-icon>
+            <b>You don't meet all the requirements.</b>
+
+            <template for:each={messages} for:item="message">
+                <p key={message}>{message}</p>
+            </template>
+        </div>
+
+        <div slot="footer">
+            <lightning-button
+                variant="neutral"
+                label="Cancel"
+                onclick={handleCancel}
+            ></lightning-button>
+            <lightning-button
+                variant="brand"
+                label="Apply"
+                class="slds-m-left_x-small"
+                disabled={disableApplyButton}
+                onclick={handleApply}
+            ></lightning-button>
+        </div>
+    </lightning-quick-action-panel>
+</template>

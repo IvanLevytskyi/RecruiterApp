@@ -1,0 +1,52 @@
+<apex:page controller="JobOfferLetterController" renderAs="pdf">
+    <h2>Job Offer Letter</h2>
+
+    <!-- Candidate Information -->
+    <div>
+        <p>Dear {!candidateName},</p>
+
+        <p>We are pleased to extend an offer of employment to you for the position of <strong>{!jobTitle}</strong> at <strong>{!companyName}</strong>. After careful consideration of your qualifications and interview performance, we believe you will be a valuable addition to our team. We are excited about the possibility of you contributing your expertise and skills to help drive our solutions and initiatives.</p>
+
+        <!-- Position Details -->
+        <h3>Position Details:</h3>
+        <ul>
+            <li><strong>Job Title</strong>: {!jobTitle}</li>
+            <li>
+                <strong>Start Date</strong>: 
+                <apex:outputText value="{0, date, MMMM d','  yyyy}">
+                    <apex:param value="{!startDate}" />
+                </apex:outputText>
+            </li>
+            <li><strong>Location</strong>: {!location}</li>
+        </ul>
+
+        <!-- Compensation & Benefits -->
+        <h3>Compensation &amp; Benefits:</h3>
+        <ul>
+            <li><strong>Base Salary</strong>: ${!salaryAmount} per month</li>
+            <apex:outputPanel layout="none" rendered="{!NOT(ISBLANK(bonusDetails))}">
+                <li><strong>Bonus</strong>: {!bonusDetails}</li>
+            </apex:outputPanel>
+        </ul>
+
+        <!-- Terms & Conditions -->
+        <h3>Conditions of Employment:</h3>
+        <p>Your employment with {!companyName} is subject to the following conditions:</p>
+        <ul>
+            <apex:outputPanel layout="none" rendered="{!NOT(ISBLANK(probationPeriod))}">
+                <li><strong>Probation period</strong>: <apex:outputText value=" {!probationPeriod} "/><apex:outputText value="{!IF(probationPeriod == 1, 'month', 'months')}"/></li>
+            </apex:outputPanel>
+            <li>Successful completion of background and reference checks.</li>
+            <li>Adherence to company policies and procedures.</li>
+        </ul>
+
+        <p>If you have any questions, feel free to reach out to our HR department at <strong>{!hiringManagerEmail}</strong>.</p>
+
+        <p>We look forward to having you join the team at {!companyName}!</p>
+
+        <p>Sincerely,</p>
+        <p><strong>{!hiringManager}</strong></p>
+        <p><strong>{!companyName}</strong></p>
+    </div>
+
+</apex:page>

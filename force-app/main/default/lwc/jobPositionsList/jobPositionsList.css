@@ -1,0 +1,14 @@
+.container {
+    background-color: #fafaf9;
+    position: relative;
+    height: 600px;
+    overflow: hidden;
+    display: flex;
+}
+
+.emptyContent {
+    outline: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

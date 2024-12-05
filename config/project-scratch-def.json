@@ -1,0 +1,29 @@
+{
+  "orgName": "ivanlevytskyi company",
+  "edition": "Developer",
+  "features": [
+    "EnableSetPasswordInApi",
+    "Communities",
+    "CustomerCommunityPlus",
+    "ForceComPlatform",
+    "Sites"
+  ],
+  "settings": {
+    "lightningExperienceSettings": {
+      "enableS1DesktopEnabled": true
+    },
+    "mobileSettings": {
+      "enableS1EncryptedStoragePref2": false
+    },
+    "orgPreferenceSettings": {
+      "networksEnabled": true,
+      "chatterEnabled": true
+    },
+    "communitiesSettings": {
+      "enableNetworksEnabled": true
+    },
+    "experienceBundleSettings": {
+      "enableExperienceBundleMetadata": true
+    }
+  }
+}

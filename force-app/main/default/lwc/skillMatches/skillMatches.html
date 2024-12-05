@@ -1,0 +1,25 @@
+<template>
+    <div lwc:if={show} class="slds-theme_default">
+        <div>
+            <p class="slds-text-title_caps slds-m-vertical_small">Matched Skills</p>
+            <p lwc:if={noRequiredSkills}>This job doesn't have any required skills.</p>
+            <p lwc:if={allSkillsMatched}>You seem to be the perfect candidate because you meet all the requirements!</p>
+            <p lwc:if={noMatchedSkills}>You don't have any of the skills required for this job.</p>
+            <template for:each={matchedSkills} for:item="skill">
+                <lightning-badge 
+                    key={skill.value} 
+                    label={skill.label} 
+                    class="slds-badge slds-theme_success"></lightning-badge>
+            </template>
+        </div>
+        <div lwc:if={showMissedSection}>
+            <p class="slds-text-title_caps slds-m-vertical_small">Missed Skills</p>
+            <template for:each={missedSkills} for:item="skill">
+                <lightning-badge 
+                    key={skill.value} 
+                    label={skill.label} 
+                    class="slds-badge slds-theme_error"></lightning-badge>
+            </template>
+        </div>
+    </div>
+</template>

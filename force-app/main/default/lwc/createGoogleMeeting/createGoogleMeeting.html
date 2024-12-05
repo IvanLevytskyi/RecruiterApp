@@ -1,0 +1,66 @@
+<template>
+    <lightning-quick-action-panel header="Create a Google Meeting" lwc:if={meetInfo}>
+        <lightning-spinner alternative-text="Processing" lwc:if={showSpinner}></lightning-spinner>
+
+        <lightning-input 
+            label="Title" 
+            data-fieldname="title" 
+            value={meetInfo.title} 
+            onchange={handleFieldChange} 
+            type="text"
+            required></lightning-input>
+        <lightning-input 
+            label="Start time" 
+            data-fieldname="startDatetime" 
+            value={meetInfo.startDatetime} 
+            onchange={handleFieldChange} 
+            type="datetime"
+            required></lightning-input>
+        <lightning-input 
+            label="End time" 
+            data-fieldname="endDatetime" 
+            value={meetInfo.endDatetime} 
+            onchange={handleFieldChange} 
+            type="datetime"
+            required></lightning-input>
+        <lightning-textarea 
+            label="Description"
+            data-fieldname="description" 
+            value={meetInfo.description} 
+            onchange={handleFieldChange}
+            ></lightning-textarea>
+
+        <!-- Display table of meeting attendees -->
+        <table class="slds-table slds-table_bordered slds-table_cell-buffer slds-table_fixed-layout slds-m-top_small">
+            <thead>
+                <tr>
+                    <th class="slds-text-title_bold">Name</th>
+                    <th class="slds-text-title_bold">Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <template for:each={meetInfo.participants} for:item="participant">
+                    <tr key={participant.email}>
+                        <td>{participant.displayName}</td>
+                        <td>{participant.email}</td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+
+        <div slot="footer">
+            <lightning-button
+                variant="neutral"
+                label="Cancel"
+                onclick={handleCancel}
+            ></lightning-button>
+            <lightning-button
+                variant="brand"
+                label="Create"
+                class="slds-m-left_x-small"
+                onclick={handleCreate}
+            ></lightning-button>
+        </div>
+    </lightning-quick-action-panel>
+    
+</template>

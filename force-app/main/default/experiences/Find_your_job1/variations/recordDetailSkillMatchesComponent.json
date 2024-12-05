@@ -1,0 +1,13 @@
+{
+  "componentVariants" : [ {
+    "id" : "c8e7fe72-742b-41cf-aad6-5569592f04cd",
+    "propertyOverrides" : {
+      "isVisible" : true
+    },
+    "targetId" : "87bea222-ae1a-43f7-8134-e60cd4672101",
+    "type" : "componentVariant"
+  } ],
+  "developerName" : "Record_Detail_skillMatches_Component",
+  "id" : "0f282663-860f-4352-a597-3ed8fe612f3c",
+  "type" : "experienceVariation"
+}

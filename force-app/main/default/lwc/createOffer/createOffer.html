@@ -1,0 +1,76 @@
+<template>
+    <lightning-quick-action-panel header={headerTitle}>
+        <lightning-card title={cardTitle} icon-name="custom:custom18" lwc:if={offerInfo}>
+            <lightning-spinner alternative-text="Processing" lwc:if={showSpinner}></lightning-spinner>
+            <div class="slds-p-around_medium">
+                <lightning-input 
+                    label="Salary" 
+                    data-fieldname="salaryAmount" 
+                    value={offerInfo.salaryAmount} 
+                    onchange={handleFieldChange} 
+                    type="number"
+                    min="0"
+                    required></lightning-input>
+                <lightning-input 
+                    label="Bonus" 
+                    data-fieldname="bonusDetails" 
+                    value={offerInfo.bonusDetails} 
+                    onchange={handleFieldChange} 
+                    type="text"></lightning-input>
+                <lightning-input 
+                    label="Probation Period (months)" 
+                    data-fieldname="probationPeriod" 
+                    value={offerInfo.probationPeriod} 
+                    onchange={handleFieldChange} 
+                    type="number"></lightning-input>
+                <lightning-input 
+                    label="Start Date" 
+                    data-fieldname="startDate" 
+                    value={offerInfo.startDate} 
+                    onchange={handleFieldChange} 
+                    type="date"
+                    min={today}
+                    required></lightning-input>
+                <lightning-input 
+                    label="Location" 
+                    data-fieldname="location" 
+                    value={offerInfo.location} 
+                    onchange={handleFieldChange} 
+                    type="text"
+                    required></lightning-input>
+            </div>
+        </lightning-card>
+
+        <div slot="footer">
+            <lightning-button
+                variant="neutral"
+                label="Cancel"
+                onclick={handleCancel}
+            ></lightning-button>
+            <lightning-button
+                variant="neutral"
+                label="Preview Email"
+                class="slds-m-left_x-small"
+                onclick={handlePreviewEmail}
+            ></lightning-button>
+            <lightning-button
+                variant="neutral"
+                label="Preview Offer"
+                class="slds-m-left_x-small"
+                onclick={handlePreviewOffer}
+            ></lightning-button>
+            <lightning-button
+                variant="brand"
+                label="Generate & Save Offer"
+                class="slds-m-left_x-small"
+                onclick={handleGenerate}
+            ></lightning-button>
+            <lightning-button
+                variant="brand"
+                label="Send Offer via Email"
+                class="slds-m-left_x-small"
+                onclick={handleSendEmail}
+            ></lightning-button>
+        </div>
+    </lightning-quick-action-panel>
+</template>

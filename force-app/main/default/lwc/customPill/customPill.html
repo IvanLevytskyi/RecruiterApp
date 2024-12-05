@@ -1,0 +1,14 @@
+<template>
+    <span class="slds-pill slds-pill_link">
+        <span class="slds-pill__icon_container" lwc:if={iconName}>
+            <lightning-icon icon-name={iconName} size="xx-small" class="slds-pill__icon"></lightning-icon>
+        </span>
+        <a class="slds-pill__action" title={label} onclick={onClickHandler}>
+            <span class="slds-pill__label">{label}</span>
+        </a>
+        <button class="slds-button slds-button_icon slds-button_icon slds-pill__remove" 
+            title="Remove" lwc:if={showRemoveButton} onclick={onRemoveHandler}>
+            <lightning-icon icon-name="utility:close" size="xx-small" class="slds-pill__icon"></lightning-icon>
+        </button>
+    </span>
+</template>
